@@ -68,7 +68,7 @@ class AngularJsLayoutPublishCommand extends PublishBaseCommand
         FileUtil::createFile($pagesPath, 'index.js', $controllerTemplate);
 
         $controllerTemplate = get_template('angularjs.index.tpl', 'laravel-generator');
-        FileUtil::createFile($pagesPath, 'tpl.html', $controllerTemplate);
+        FileUtil::createFile($pagesPath, 'index.html', $controllerTemplate);
     }
 
 
