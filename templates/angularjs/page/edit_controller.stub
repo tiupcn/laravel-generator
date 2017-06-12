@@ -1,0 +1,3 @@
+angular.module('app').controller('$MODEL_NAME$EditCtrl',['$scope', function($scope){
+    $scope.name = "$MODEL_NAME$EditCtrl";
+}]);

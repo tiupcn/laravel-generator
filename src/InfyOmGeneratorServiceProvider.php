@@ -21,6 +21,8 @@ use InfyOm\Generator\Commands\Scaffold\RequestsGeneratorCommand;
 use InfyOm\Generator\Commands\Scaffold\ScaffoldGeneratorCommand;
 use InfyOm\Generator\Commands\Scaffold\ViewsGeneratorCommand;
 use InfyOm\Generator\Commands\VueJs\VueJsGeneratorCommand;
+use InfyOm\Generator\Commands\Publish\AngularJsLayoutPublishCommand;
+use InfyOm\Generator\Commands\AngularJs\AngularJsGeneratorCommand;
 
 class InfyOmGeneratorServiceProvider extends ServiceProvider
 {
@@ -115,6 +117,12 @@ class InfyOmGeneratorServiceProvider extends ServiceProvider
         $this->app->singleton('infyom.publish.vuejs', function ($app) {
             return new VueJsLayoutPublishCommand();
         });
+        $this->app->singleton('infyom.angularjs', function ($app) {
+            return new AngularJsGeneratorCommand();
+        });
+        $this->app->singleton('infyom.publish.angularjs', function ($app) {
+            return new AngularJsLayoutPublishCommand();
+        });
 
         $this->commands([
             'infyom.publish',
@@ -135,6 +143,8 @@ class InfyOmGeneratorServiceProvider extends ServiceProvider
             'infyom.rollback',
             'infyom.vuejs',
             'infyom.publish.vuejs',
+            'infyom.angularjs',
+            'infyom.publish.angularjs'
         ]);
     }
 }

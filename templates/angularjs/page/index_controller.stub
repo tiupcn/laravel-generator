@@ -1,0 +1,3 @@
+angular.module('app').controller('$MODEL_NAME$IndexCtrl',['$scope', function($scope){
+    $scope.name = "$MODEL_NAME$IndexCtrl";
+}]);

@@ -1,0 +1,3 @@
+<div ng-controller="IndexCtrl">
+hello index 12234 {{name}}
+</div>
