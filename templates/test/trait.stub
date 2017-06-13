@@ -1,9 +1,9 @@
 <?php
-
+namespace Tests\Traits;
 use Faker\Factory as Faker;
 use $NAMESPACE_MODEL$\$MODEL_NAME$;
 use $NAMESPACE_REPOSITORY$\$MODEL_NAME$Repository;
-
+use App;
 trait Make$MODEL_NAME$Trait
 {
     /**

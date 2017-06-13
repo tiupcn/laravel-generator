@@ -38,6 +38,21 @@ class AngularJsLayoutPublishCommand extends PublishBaseCommand
         $this->updateRoutes();
         $this->publishHomeController();
         $this->publishApiController();
+        $this->publishTestCases();
+    }
+
+    private function publishTestCases()
+    {
+        $traitPath = __DIR__.'/../../../templates/test/api_test_trait.stub';
+
+        $testsPath = config('infyom.laravel_generator.path.api_test', base_path('tests/'));
+
+        $this->publishFile($traitPath, $testsPath.'ApiTestTrait.php', 'ApiTestTrait.php');
+
+        if (!file_exists($testsPath.'traits/')) {
+            mkdir($testsPath.'traits/');
+            $this->info('traits directory created');
+        }
     }
 
     private function copyView()

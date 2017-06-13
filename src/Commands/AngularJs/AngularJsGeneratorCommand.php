@@ -14,6 +14,10 @@ use InfyOm\Generator\Generators\AngularJs\ModelJsConfigGenerator;
 use InfyOm\Generator\Generators\AngularJs\RoutesGenerator;
 use InfyOm\Generator\Generators\AngularJs\ViewGenerator;
 
+use InfyOm\Generator\Generators\API\APITestGenerator;
+use InfyOm\Generator\Generators\TestTraitGenerator;
+use InfyOm\Generator\Generators\RepositoryTestGenerator;
+
 class AngularJsGeneratorCommand extends BaseCommand
 {
     /**
@@ -71,6 +75,18 @@ class AngularJsGeneratorCommand extends BaseCommand
 
         $routeGenerator = new RoutesGenerator($this->commandData);
         $routeGenerator->generate();
+
+        if (!$this->isSkip('tests') and $this->commandData->getAddOn('tests')) {
+            $repositoryTestGenerator = new RepositoryTestGenerator($this->commandData);
+            $repositoryTestGenerator->generate();
+
+            $testTraitGenerator = new TestTraitGenerator($this->commandData);
+            $testTraitGenerator->generate();
+
+            $apiTestGenerator = new APITestGenerator($this->commandData);
+            $apiTestGenerator->generate();
+        }
+
 
         // if ($this->commandData->config->getAddOn('menu.enabled')) {
         //     $menuGenerator = new MenuGenerator($this->commandData);
