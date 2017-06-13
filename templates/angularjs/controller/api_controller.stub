@@ -24,7 +24,16 @@ class $MODEL_NAME$APIController extends TiupBaseController
     $DOC_INDEX$
     public function index(Request $request)
     {
-        
+        if (request()->has('sort')) {
+            list($sortCol, $sortDir) = explode('|', request()->sort);
+            $query = $MODEL_NAME$::orderBy($sortCol, $sortDir);
+        } else {
+            $query = $MODEL_NAME$::orderBy('created_at', 'asc');
+        }
+
+
+        $perPage = request()->has('per_page') ? (int) request()->per_page : null;
+        return response()->json($query->paginate($perPage));  
     }
 
     $DOC_STORE$

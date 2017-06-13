@@ -27,6 +27,39 @@ class ControllerGenerator extends BaseGenerator
     public function generate()
     {
         $templateData = get_template('angularjs.controller.api_controller', 'laravel-generator');
+        $templateData = fill_template($this->commandData->dynamicVars, $templateData);
+        $templateData = $this->fillDocs($templateData);
+
+        $fields = $this->commandData->fields;
+        $i = 0;
+        $filter = '';
+        $searchableCount = 0;
+        foreach ($fields as $field) {
+            if ($field->isSearchable) {
+                $searchableCount++;
+            }
+        }
+        foreach ($fields as $field) {
+            if ($field->isSearchable) {
+                if ($i == 0) {
+                    $filter .= '$q->where("'.$field->name.'", "like", $value)';
+                    if ($searchableCount == 1) {
+                        $filter .= ';';
+                    } else {
+                        $filter .= "\n";
+                    }
+                } else {
+                    if ($i == $searchableCount - 1) {
+                        $filter .= '                  ->orWhere("'.$field->name.'", "like", $value);';
+                    } else {
+                        $filter .= '                  ->orWhere("'.$field->name.'", "like", $value)'."\n";
+                    }
+                }
+                $i++;
+            }
+        }
+        $templateData = str_replace('$API_VUEJS_CONTROLLER_FILTER$', $filter, $templateData);
+        FileUtil::createFile($this->path, $this->fileName, $templateData);
 
         $templateData = fill_template($this->commandData->dynamicVars, $templateData);
         $templateData = $this->fillDocs($templateData);
