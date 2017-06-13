@@ -38,9 +38,29 @@ class AngularJsLayoutPublishCommand extends PublishBaseCommand
         $this->updateRoutes();
         $this->publishHomeController();
         $this->publishApiController();
+        $this->publishApiRequest();
         $this->publishTestCases();
     }
 
+    private function publishApiRequest(){
+        $templateData = get_template('angularjs.request.myapirequest', 'laravel-generator');
+        $fileName = 'MyApiRequest.php';
+
+        $path = config('infyom.laravel_generator.path.api_request', app_path('Http/Requests/API'));
+
+        if (file_exists($path.$fileName)) {
+            $answer = $this->ask('Do you want to overwrite '.$fileName.'? (y|N) :', false);
+
+            if (strtolower($answer) != 'y' and strtolower($answer) != 'yes') {
+                return;
+            }
+        }
+
+        FileUtil::createFile($path, $fileName, $templateData);
+
+        $this->info('Api Request created');
+
+    }
     private function publishTestCases()
     {
         $traitPath = __DIR__.'/../../../templates/test/api_test_trait.stub';
