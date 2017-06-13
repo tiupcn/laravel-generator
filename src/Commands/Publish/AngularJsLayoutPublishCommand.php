@@ -79,31 +79,39 @@ class AngularJsLayoutPublishCommand extends PublishBaseCommand
     {
         //copy js
         $path = base_path('resources/assets/app/');
+        $templatesPath = __DIR__.'/../../../templates/angularjs/app/';
+    
+        $this->publishDirectory($templatesPath, $path, 'app');
 
-        //初始化公共组件
-        $appJsTemplate = get_template('angularjs.js.app', 'laravel-generator');
-        FileUtil::createFile($path, 'app.js', $appJsTemplate);
+        $path = base_path('resources/assets/app/pages');
+        $templatesPath = __DIR__.'/../../../templates/angularjs/app/pages';
+        $this->publishDirectory($templatesPath, $path, 'pages');
 
-        $lazyLoadTemplate = get_template('angularjs.js.lazyload', 'laravel-generator');
-        FileUtil::createFile($path, 'config.lazyload.js', $lazyLoadTemplate);
-
-        $routeTemplate = get_template('angularjs.js.route', 'laravel-generator');
-        FileUtil::createFile($path, 'config.route.js', $routeTemplate);
-
-        $libsTemplate = get_template('angularjs.js.libs', 'laravel-generator');
-        FileUtil::createFile($path, 'libs.js', $libsTemplate);
-
-        //初始化首页
-        $path = base_path('resources/assets/app/');
-
-        $homeTemplate = get_template('angularjs.index.home','laravel-generator');
+        $homeTemplate = get_template('angularjs.view.home','laravel-generator');
         FileUtil::createFile('resources/views/','home.blade.php', $homeTemplate);
-        $pagesPath = base_path('resources/assets/app/pages/index/');
-        $controllerTemplate = get_template('angularjs.index.controller', 'laravel-generator');
-        FileUtil::createFile($pagesPath, 'index.js', $controllerTemplate);
+        //初始化公共组件
+        // $appJsTemplate = get_template('angularjs.js.app', 'laravel-generator');
+        // FileUtil::createFile($path, 'app.js', $appJsTemplate);
 
-        $controllerTemplate = get_template('angularjs.index.tpl', 'laravel-generator');
-        FileUtil::createFile($pagesPath, 'index.html', $controllerTemplate);
+        // $lazyLoadTemplate = get_template('angularjs.js.lazyload', 'laravel-generator');
+        // FileUtil::createFile($path, 'config.lazyload.js', $lazyLoadTemplate);
+
+        // $routeTemplate = get_template('angularjs.js.route', 'laravel-generator');
+        // FileUtil::createFile($path, 'config.route.js', $routeTemplate);
+
+        // $libsTemplate = get_template('angularjs.js.libs', 'laravel-generator');
+        // FileUtil::createFile($path, 'libs.js', $libsTemplate);
+
+        // //初始化首页
+        // $path = base_path('resources/assets/app/');
+
+       
+        // $pagesPath = base_path('resources/assets/app/pages/index/');
+        // $controllerTemplate = get_template('angularjs.index.controller', 'laravel-generator');
+        // FileUtil::createFile($pagesPath, 'index.js', $controllerTemplate);
+
+        // $controllerTemplate = get_template('angularjs.index.tpl', 'laravel-generator');
+        // FileUtil::createFile($pagesPath, 'index.html', $controllerTemplate);
     }
 
 
