@@ -1,3 +1,7 @@
 angular.module('app').controller('$MODEL_NAME$EditCtrl',['$scope', function($scope){
-    $scope.name = "$MODEL_NAME$EditCtrl";
+    $scope.$MODEL_NAME_CAMEL$ = {};
+
+    $scope.save = function(){
+    	console.info($scope.$MODEL_NAME_CAMEL$)
+    };
 }]);

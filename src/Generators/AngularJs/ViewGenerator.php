@@ -71,8 +71,33 @@ class ViewGenerator extends BaseGenerator
         $controllerData = fill_template($this->commandData->dynamicVars, $controllerData);
         FileUtil::createFile($this->pagePath, 'edit.js', $controllerData);
 
+        foreach ($this->commandData->fields as $field) {
+            if (!$field->inForm) {
+                continue;
+            }
+
+            switch ($field->htmlType) {
+                case 'text':
+                    $fieldTemplate = get_template('angularjs.fields.' . $field->htmlType, 'laravel-generator');
+                    break;
+                default: 
+                    $fieldTemplate = get_template('angularjs.fields.text', 'laravel-generator');
+                    break;
+            }
+            if (!empty($fieldTemplate)) {
+                $fieldTemplate = fill_template_with_field_data(
+                    $this->commandData->dynamicVars,
+                    $this->commandData->fieldNamesMapping,
+                    $fieldTemplate,
+                    $field
+                );
+                $this->htmlFields[] = $fieldTemplate;
+            }
+        }
+
         $templateData = get_template('angularjs.page.edit_tpl', 'laravel-generator');
         $templateData = fill_template($this->commandData->dynamicVars, $templateData);
+        $templateData = str_replace('$FIELDS$', implode("\n\n", $this->htmlFields), $templateData);
         FileUtil::createFile($this->pagePath, 'edit.html', $templateData);
     }
 }
