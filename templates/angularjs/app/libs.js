@@ -1,2 +1,4 @@
 //第三方包
-angular = require('angular')
+$ = jQuery = require('angular');
+require('angular');
+require('bootstrap');

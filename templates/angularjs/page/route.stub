@@ -1,15 +1,15 @@
 //start $MODEL_NAME_PLURAL_CAMEL$ route
-        .state('$MODEL_NAME_PLURAL_CAMEL$', {
+        .state('app.$MODEL_NAME_PLURAL_CAMEL$', {
             url: '/$MODEL_NAME_PLURAL_CAMEL$',
             //resolve: load(['/static/pages/$MODEL_NAME_PLURAL_CAMEL$/style.css']),
-            template: ''
+            template: '<div ui-view></div>'
         })
-        .state('$MODEL_NAME_PLURAL_CAMEL$.index', {
+        .state('app/$MODEL_NAME_PLURAL_CAMEL$.index', {
             url: '/index',
             templateUrl: '/static/pages/$MODEL_NAME_PLURAL_CAMEL$/index.html',
             resolve: load(['/static/pages/$MODEL_NAME_PLURAL_CAMEL$/index.js'])
         })
-        .state('$MODEL_NAME_PLURAL_CAMEL$.edit', {
+        .state('app/$MODEL_NAME_PLURAL_CAMEL$.edit', {
             url: '/edit',
             templateUrl: '/static/pages/$MODEL_NAME_PLURAL_CAMEL$/edit.html',
             resolve: load(['/static/pages/$MODEL_NAME_PLURAL_CAMEL$/edit.js'])

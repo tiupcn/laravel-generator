@@ -1,14 +1,14 @@
 angular.module('app').config(['$stateProvider',"$urlRouterProvider", function($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise('index');
+	$urlRouterProvider.otherwise('app/index');
 	$stateProvider
 		//generator begin
-        .state('show', {
-            url: '/show',
-            templateUrl: '/static/pages/show/index.html',
-            resolve: load(['/static/pages/show/index.js'])
+        .state('app', {
+            abstract: true,
+            url: '/app',
+            templateUrl: '/static/pages/app/app.html'
         })
         //generator end
-        .state('index', {
+        .state('app.index', {
             url: '/index',
             templateUrl: '/static/pages/index/index.html',
             resolve: load(['/static/pages/index/index.js'])
