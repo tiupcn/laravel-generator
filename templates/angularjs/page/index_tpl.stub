@@ -38,8 +38,7 @@
                 <input type="checkbox"><i></i>
               </label>
             </th>
-            <th>Project</th>
-            <th>Task</th>
+            $TABLE_HEADER$
             <th>Date</th>
             <th style="width:30px;"></th>
           </tr>
@@ -47,8 +46,7 @@
         <tbody>
           <tr ng-repeat="$MODEL_NAME_CAMEL$ in $MODEL_NAME_PLURAL_CAMEL$">
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>{{$MODEL_NAME_CAMEL$.title}}</td>
-            <td><span class="text-ellipsis">{{$MODEL_NAME_CAMEL$.body}}</span></td>
+            $TABLE_BODY$
             <td>
               <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
             </td>

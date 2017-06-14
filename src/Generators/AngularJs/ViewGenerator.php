@@ -62,7 +62,27 @@ class ViewGenerator extends BaseGenerator
         $controllerData = fill_template($this->commandData->dynamicVars, $controllerData);
         FileUtil::createFile($this->pagePath, 'index.js', $controllerData);
 
+        $table_headers = [];
+        $table_bodys = [];
+            
+        $i = 0;
+        foreach ($this->commandData->fields as $field) {
+            if (!$field->inForm) {
+                continue;
+            }
+            // print_r($this->commandData->config);
+            $table_bodys[] = "\t\t\t\t\t\t<td>{{".$this->commandData->config->mCamel.".".$field->name."}}</td>";
+            $table_headers[] = "\t\t\t\t\t\t<th>".$field->name."</th>";
+            $i ++;
+            if($i == 2){
+                break;
+            }
+        }
+
         $templateData = get_template('angularjs.page.index_tpl', 'laravel-generator');
+        $templateData = str_replace('$TABLE_BODY$', "\n".implode("\n", $table_bodys), $templateData);
+        $templateData = str_replace('$TABLE_HEADER$', "\n".implode("\n", $table_headers), $templateData);
+
         $templateData = fill_template($this->commandData->dynamicVars, $templateData);
         FileUtil::createFile($this->pagePath, 'index.html', $templateData);
     }
