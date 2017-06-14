@@ -1,10 +1,11 @@
 var app = angular.module('app',[
 		require('angular-ui-router'),
 		require('oclazyload'),
-		require('angular-resource')
+		require('restangular')
 	]);
 require('./config.lazyload.js');
 require('./config.route.js');
+require('./services/service.js');
 
 app.controller('AppCtrl',['$scope','$ocLazyLoad', function($scope, $ocLazyLoad){
 	$scope.app = {
