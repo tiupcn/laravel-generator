@@ -1,18 +1,24 @@
 <div ng-controller="$MODEL_NAME$EditCtrl">
-<div class="panel panel-default">
-    <div class="panel-heading font-bold">
-    	$MODEL_NAME$
-    </div>
-    <div class="panel-body">
-    	<form class="form-horizontal" method="get">
-			$FIELDS$
-			<div class="line line-dashed b-b line-lg pull-in"></div>
+	<div class="bg-light lter b-b wrapper-md">
+	  <h1 class="m-n font-thin h3">$MODEL_NAME$</h1>
+	</div>
+	<div class="wrapper-md">
+	  <div class="panel panel-default">
+	    <div class="panel-heading font-bold">
+	      Form elements
+	    </div>
+	    <div class="panel-body">
+	      <form class="form-horizontal">
+	        $FIELDS$
+	        <div class="line line-dashed b-b line-lg pull-in"></div>
 	        <div class="form-group">
 	          <div class="col-sm-4 col-sm-offset-2">
-	            <button type="submit" class="btn btn-default">取消</button>
-	            <button type="submit" class="btn btn-primary">保存</button>
+	            <button class="btn btn-default">取消</button>
+	            <button class="btn btn-primary" ng-click="save()">保存</button>
 	          </div>
 	        </div>
-		</form>
+	      </form>
+	    </div>
+	  </div>
 	</div>
 </div>

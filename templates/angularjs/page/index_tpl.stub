@@ -1,5 +1,4 @@
 <div ng-controller="$MODEL_NAME$IndexCtrl">
-<div ng-controller="ArticleIndexCtrl">
 <div class="bg-light lter b-b wrapper-md">
   <h1 class="m-n font-thin h3">$MODEL_NAME$ List</h1>
 </div>
@@ -23,9 +22,9 @@
       </div>
       <div class="col-sm-3">
         <div class="input-group">
-          <input type="text" class="input-sm form-control" placeholder="Search">
+          <input type="text" class="input-sm form-control" ng-model="search" placeholder="Search">
           <span class="input-group-btn">
-            <button class="btn btn-sm btn-default" type="button">Go!</button>
+            <button class="btn btn-sm btn-default" type="button" ng-click="get$MODEL_NAME_PLURAL$()">Go!</button>
           </span>
         </div>
       </div>
@@ -46,11 +45,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr ng-repeat="$MODEL_NAME_CAMEL$ in $MODEL_NAME_PLURAL_CAMEL$">
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>Idrawfast prototype design prototype design prototype design prototype design prototype design</td>
-            <td><span class="text-ellipsis">{item.PrHelpText1}</span></td>
-            <td><span class="text-ellipsis">{item.PrHelpText1}</span></td>
+            <td>{{$MODEL_NAME_CAMEL$.title}}</td>
+            <td><span class="text-ellipsis">{{$MODEL_NAME_CAMEL$.body}}</span></td>
             <td>
               <a href class="active" ui-toggle-class><i class="fa fa-check text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
             </td>
@@ -87,6 +85,5 @@
       </div>
     </footer>
   </div>
-</div>
 </div>
 </div>

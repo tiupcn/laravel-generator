@@ -1,3 +1,20 @@
 angular.module('app').controller('$MODEL_NAME$IndexCtrl',['$scope', function($scope){
     $scope.name = "$MODEL_NAME$IndexCtrl";
 }]);
+
+angular.module('app').controller('$MODEL_NAME$IndexCtrl',['$scope','R', function($scope, R){
+    $scope.$MODEL_NAME_PLURAL_CAMEL$ = [];
+   	$scope.per_page = 10;
+   	$scope.search = '';
+    $scope.get$MODEL_NAME_PLURAL$ = function(){
+    	var params = {
+    		per_page: $scope.per_page,
+    		search:$scope.search
+    	};
+    	R.all('$MODEL_NAME_PLURAL_CAMEL$').getList(params).then(function(data){
+    		$scope.$MODEL_NAME_PLURAL_CAMEL$ = data;
+	    });
+    }
+
+    $scope.get$MODEL_NAME_PLURAL$();
+}]);

@@ -52,6 +52,7 @@ class ViewGenerator extends BaseGenerator
         $modelRouteData = fill_template($this->commandData->dynamicVars, $modelRouteData);
         
         $routeData = file_get_contents($filename);
+        $routeData = str_replace($modelRouteData, "//generator end", $routeData);
         $routeData = str_replace("//generator end", $modelRouteData, $routeData);
         file_put_contents($filename, $routeData);
     }
