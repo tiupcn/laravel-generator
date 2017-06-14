@@ -4,12 +4,12 @@
             //resolve: load(['/static/pages/$MODEL_NAME_PLURAL_CAMEL$/style.css']),
             template: '<div ui-view></div>'
         })
-        .state('app/$MODEL_NAME_PLURAL_CAMEL$.index', {
+        .state('app.$MODEL_NAME_PLURAL_CAMEL$.index', {
             url: '/index',
             templateUrl: '/static/pages/$MODEL_NAME_PLURAL_CAMEL$/index.html',
             resolve: load(['/static/pages/$MODEL_NAME_PLURAL_CAMEL$/index.js'])
         })
-        .state('app/$MODEL_NAME_PLURAL_CAMEL$.edit', {
+        .state('app.$MODEL_NAME_PLURAL_CAMEL$.edit', {
             url: '/edit',
             templateUrl: '/static/pages/$MODEL_NAME_PLURAL_CAMEL$/edit.html',
             resolve: load(['/static/pages/$MODEL_NAME_PLURAL_CAMEL$/edit.js'])
