@@ -10,7 +10,7 @@
             resolve: load(['/static/pages/$MODEL_NAME_PLURAL_CAMEL$/index.js'])
         })
         .state('app.$MODEL_NAME_PLURAL_CAMEL$.edit', {
-            url: '/edit',
+            url: '/edit?id',
             templateUrl: '/static/pages/$MODEL_NAME_PLURAL_CAMEL$/edit.html',
             resolve: load(['/static/pages/$MODEL_NAME_PLURAL_CAMEL$/edit.js'])
         })

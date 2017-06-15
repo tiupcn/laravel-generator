@@ -1,6 +1,6 @@
-		<div class="form-group">
-			<label class="col-sm-2 control-label">$FIELD_NAME$</label>
-				<div class="col-sm-10">
-				<input ng-model="$MODEL_NAME_CAMEL$.$FIELD_NAME$" type="text" class="form-control">                        
-			</div>
-		</div>
+<div class="form-group">
+						<label for="title" class="col-sm-2 control-label">$FIELD_NAME$</label>
+						<div class="col-sm-10">
+							<input name="$FIELD_NAME$" ng-model="$MODEL_NAME_CAMEL$.$FIELD_NAME$" type="text" class="form-control" ng-blur="checkValue($event)">
+						</div>
+					</div>

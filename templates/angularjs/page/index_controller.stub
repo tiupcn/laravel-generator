@@ -1,20 +1,35 @@
-angular.module('app').controller('$MODEL_NAME$IndexCtrl',['$scope', function($scope){
-    $scope.name = "$MODEL_NAME$IndexCtrl";
-}]);
-
-angular.module('app').controller('$MODEL_NAME$IndexCtrl',['$scope','R', function($scope, R){
-    $scope.$MODEL_NAME_PLURAL_CAMEL$ = [];
-   	$scope.per_page = 10;
-   	$scope.search = '';
-    $scope.get$MODEL_NAME_PLURAL$ = function(){
+angular.module('app').controller('$MODEL_NAME$IndexCtrl',['$scope', 'R', 'toaster', function($scope, R, toaster){
+    $scope.pop = function(type, title){
+        toaster.pop(type, title);
+    };
+    $scope.currentPage = 1;
+    $scope.search = '';
+    $scope.perpageCollection = [10, 20, 50];
+    $scope.per_page = $scope.perpageCollection[0];
+    $scope.$watch('per_page',function(newval, oldval){
+        if(newval != oldval){
+            $scope.get$MODEL_NAME_PLURAL$($scope.currentPage,$scope.per_page);
+        }
+    })
+    $scope.pageChanged = function () {
+        $scope.get$MODEL_NAME_PLURAL$($scope.currentPage,$scope.per_page);
+    };
+    $scope.get$MODEL_NAME_PLURAL$ = function(page, per_page){
     	var params = {
-    		per_page: $scope.per_page,
+            page: page,
+    		per_page: per_page,
     		search:$scope.search
     	};
     	R.all('$MODEL_NAME_PLURAL_CAMEL$').getList(params).then(function(data){
     		$scope.$MODEL_NAME_PLURAL_CAMEL$ = data;
+            $scope.totalItems = data.total;
 	    });
     }
-
-    $scope.get$MODEL_NAME_PLURAL$();
+    $scope.delete$MODEL_NAME_PLURAL$ = function(one){
+        one.remove().then(function(data){
+            $scope.pop('success',data.message);
+            $scope.get$MODEL_NAME_PLURAL$($scope.currentPage,$scope.per_pages);
+        });
+    }
+    $scope.get$MODEL_NAME_PLURAL$($scope.currentPage,$scope.per_page);
 }]);

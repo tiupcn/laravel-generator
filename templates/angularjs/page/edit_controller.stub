@@ -1,7 +1,44 @@
-angular.module('app').controller('$MODEL_NAME$EditCtrl',['$scope', function($scope){
-    $scope.$MODEL_NAME_CAMEL$ = {};
-
+angular.module('app').controller('$MODEL_NAME$EditCtrl',['$scope','$state','$stateParams','R','toaster',function($scope,$state,$stateParams,R,toaster){
+		$scope.pop = function(type, title){
+	    toaster.pop(type, title);
+	  };
+	  if($stateParams.id !== undefined){
+			R.one('$MODEL_NAME_PLURAL$',$stateParams.id).get().then(function(data){
+				$scope.$MODEL_NAME_CAMEL$ = data;
+			});
+		}else {
+			$scope.$MODEL_NAME_CAMEL$ = {};
+		}
+	  $scope.checkValue = function (event){
+	    if(!$(event.target).val()){
+	        $(event.target).parent().parent().addClass('has-error shake');
+	    }else{
+	        $(event.target).parent().parent().removeClass('has-error shake');
+	    }
+	  }
     $scope.save = function(){
-    	console.info($scope.$MODEL_NAME_CAMEL$)
-    };
+    	if($stateParams.id !== undefined){
+    		$scope.$MODEL_NAME_CAMEL$.patch().then(function(){
+    			$scope.pop('success','修改成功');
+    			setTimeout(function(){
+		  			$state.go('app.$MODEL_NAME_PLURAL$.index');
+		  		},500);
+    		})
+    	}else {
+	    	R.all('$MODEL_NAME_PLURAL$').post($scope.$MODEL_NAME_CAMEL$).then(function(){
+		  		$scope.pop('success','添加成功');
+		  		setTimeout(function(){
+		  			$state.go('app.$MODEL_NAME_PLURAL$.index');
+		  		},500);
+		    },function(data){
+		    	var err = data.data.errors;
+		    	for(var key in err){
+		    		$('input[name="'+ key +'"]').parent().parent().addClass('has-error shake');
+		    		$.each(err[key],function(i, val){
+			    		$scope.pop('error',val);
+			    	})
+		    	}
+		    });
+    	}
+	  };
 }]);
