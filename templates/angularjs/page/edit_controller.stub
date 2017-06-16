@@ -11,9 +11,9 @@ angular.module('app').controller('$MODEL_NAME$EditCtrl',['$scope','$state','$sta
 		}
 	  $scope.checkValue = function (event){
 	    if(!$(event.target).val()){
-	        $(event.target).parent().parent().addClass('has-error shake');
+	        $(event.target).parent().parent().addClass('has-error shake animated');
 	    }else{
-	        $(event.target).parent().parent().removeClass('has-error shake');
+	        $(event.target).parent().parent().removeClass('has-error shake animated');
 	    }
 	  }
     $scope.save = function(){
@@ -33,7 +33,7 @@ angular.module('app').controller('$MODEL_NAME$EditCtrl',['$scope','$state','$sta
 		    },function(data){
 		    	var err = data.data.errors;
 		    	for(var key in err){
-		    		$('input[name="'+ key +'"]').parent().parent().addClass('has-error shake');
+		    		$('input[name="'+ key +'"]').parent().parent().addClass('has-error shake animated');
 		    		$.each(err[key],function(i, val){
 			    		$scope.pop('error',val);
 			    	})

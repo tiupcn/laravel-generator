@@ -1,8 +1,8 @@
 //start $MODEL_NAME_PLURAL_CAMEL$ route
         .state('app.$MODEL_NAME_PLURAL_CAMEL$', {
             url: '/$MODEL_NAME_PLURAL_CAMEL$',
-            //resolve: load(['/static/pages/$MODEL_NAME_PLURAL_CAMEL$/style.css']),
-            template: '<div ui-view></div>'
+            template: '<div ui-view></div>',
+            resolve: load(['/static/pages/$MODEL_NAME_PLURAL_CAMEL$/style.css']),
         })
         .state('app.$MODEL_NAME_PLURAL_CAMEL$.index', {
             url: '/index',
