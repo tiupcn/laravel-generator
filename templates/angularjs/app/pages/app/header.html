@@ -1,5 +1,5 @@
 <!-- navbar header -->
-<div class="navbar-header bg-dark">
+<div class="navbar-header {{app.settings.navbarHeaderColor}}">
   <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
     <i class="glyphicon glyphicon-cog"></i>
   </button>
@@ -24,7 +24,7 @@
       <i class="fa fa-dedent fa-fw text"></i>
       <i class="fa fa-indent fa-fw text-active"></i>
     </a>
-    <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
+    <a href class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
       <i class="icon-user fa-fw"></i>
     </a>
   </div>
@@ -33,7 +33,7 @@
   <!-- link and dropdown -->
   <ul class="nav navbar-nav hidden-sm">
     <li class="dropdown pos-stc">
-      <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+      <a href data-toggle="dropdown" class="dropdown-toggle">
         <span>Mega</span> 
         <span class="caret"></span>
       </a>
@@ -136,12 +136,12 @@
       </div>
     </li>
     <li class="dropdown">
-      <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+      <a href data-toggle="dropdown" class="dropdown-toggle">
         <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
         <span translate="header.navbar.new.NEW">New</span> <span class="caret"></span>
       </a>
       <ul class="dropdown-menu" role="menu">
-        <li><a href="#" translate="header.navbar.new.PROJECT">Projects</a></li>
+        <li><a href translate="header.navbar.new.PROJECT">Projects</a></li>
         <li>
           <a href>
             <span class="badge bg-info pull-right">5</span>
@@ -177,7 +177,7 @@
   <!-- nabar right -->
   <ul class="nav navbar-nav navbar-right">
     <li class="dropdown">
-      <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+      <a href data-toggle="dropdown" class="dropdown-toggle">
         <i class="icon-bell fa-fw"></i>
         <span class="visible-xs-inline">Notifications</span>
         <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
@@ -214,7 +214,7 @@
       <!-- / dropdown -->
     </li>
     <li class="dropdown">
-      <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
+      <a href data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
         <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
           <img src="static/img/a1.jpg" alt="...">
           <i class="on md b-white bottom"></i>

@@ -16,7 +16,7 @@ app.controller('AppCtrl',['$scope','$ocLazyLoad', function($scope, $ocLazyLoad){
     version: '1.0.0',
     settings: {
       themeID: 1,
-      navbarHeaderColor: 'bg-black',
+      navbarHeaderColor: 'bg-white-only',
       navbarCollapseColor: 'bg-white-only',
       asideColor: 'bg-black',
       headerFixed: true,
@@ -26,4 +26,5 @@ app.controller('AppCtrl',['$scope','$ocLazyLoad', function($scope, $ocLazyLoad){
       container: false
     }
   }
+  $scope.copyright = new Date().getFullYear();
 }]);
