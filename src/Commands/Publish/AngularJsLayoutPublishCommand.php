@@ -128,7 +128,7 @@ class AngularJsLayoutPublishCommand extends PublishBaseCommand
     private function publishApiController(){
         $templateData = get_template('angularjs.controller.api_base_controller', 'laravel-generator');
         $templateData = $this->fillTemplate($templateData);
-        $fileName = 'ApiController.php';
+        $fileName = 'AppBaseController.php';
         $controllerPath = config('infyom.laravel_generator.path.controller', app_path('Http/Controllers/'));
         if (file_exists($controllerPath.$fileName)) {
             $answer = $this->ask('Do you want to overwrite '.$fileName.'? (y|N) :', false);
