@@ -26,5 +26,6 @@ app.controller('AppCtrl',['$scope','$ocLazyLoad', function($scope, $ocLazyLoad){
       container: false
     }
   }
+  $scope.user = window.user;
   $scope.copyright = new Date().getFullYear();
 }]);
