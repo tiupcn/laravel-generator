@@ -10,7 +10,7 @@
       </div>
       <div class="row wrapper">
         <div class="col-sm-5 m-b-xs">
-          <a ng-href="#/app/$MODEL_NAME_PLURAL$/edit" class="btn btn-sm btn-default">添加</a>               
+          <a ng-href="#/app/$MODEL_NAME_PLURAL_CAMEL$/edit" class="btn btn-sm btn-default">添加</a>               
         </div>
         <div class="col-sm-4">
         </div>
