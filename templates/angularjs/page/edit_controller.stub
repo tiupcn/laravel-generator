@@ -3,7 +3,7 @@ angular.module('app').controller('$MODEL_NAME$EditCtrl',['$scope','$state','$sta
 	    toaster.pop(type, title);
 	  };
 	  if($stateParams.id !== undefined){
-			R.one('$MODEL_NAME_PLURAL$',$stateParams.id).get().then(function(data){
+			R.one('$MODEL_NAME_PLURAL_CAMEL$',$stateParams.id).get().then(function(data){
 				$scope.$MODEL_NAME_CAMEL$ = data;
 			});
 		}else {
@@ -21,14 +21,14 @@ angular.module('app').controller('$MODEL_NAME$EditCtrl',['$scope','$state','$sta
     		$scope.$MODEL_NAME_CAMEL$.patch().then(function(){
     			$scope.pop('success','修改成功');
     			setTimeout(function(){
-		  			$state.go('app.$MODEL_NAME_PLURAL$.index');
+		  			$state.go('app.$MODEL_NAME_PLURAL_CAMEL$.index');
 		  		},500);
     		})
     	}else {
-	    	R.all('$MODEL_NAME_PLURAL$').post($scope.$MODEL_NAME_CAMEL$).then(function(){
+	    	R.all('$MODEL_NAME_PLURAL_CAMEL$').post($scope.$MODEL_NAME_CAMEL$).then(function(){
 		  		$scope.pop('success','添加成功');
 		  		setTimeout(function(){
-		  			$state.go('app.$MODEL_NAME_PLURAL$.index');
+		  			$state.go('app.$MODEL_NAME_PLURAL_CAMEL$.index');
 		  		},500);
 		    },function(data){
 		    	var err = data.data.errors;
