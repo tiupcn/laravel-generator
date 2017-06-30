@@ -56,7 +56,6 @@ class TestTraitGenerator extends BaseGenerator
             }
 
             $fieldData = "'".$field->name."' => ".'$fake->';
-
             switch ($field->fieldType) {
                 case 'integer':
                 case 'float':
@@ -69,6 +68,7 @@ class TestTraitGenerator extends BaseGenerator
                     $fakerData = 'text';
                     break;
                 case 'datetime':
+                case 'dateTime':
                     $fakerData = "date('Y-m-d H:i:s')";
                     break;
                 case 'enum':
@@ -79,7 +79,6 @@ class TestTraitGenerator extends BaseGenerator
                 default:
                     $fakerData = 'word';
             }
-
             $fieldData .= $fakerData;
 
             $fields[] = $fieldData;

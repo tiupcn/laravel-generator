@@ -1,5 +1,5 @@
 // Route index for $MODEL_NAME$ 
-Route::resource('$ROUTE_PREFIX$$MODEL_NAME_PLURAL_CAMEL$', 'Api\\$MODEL_NAME$APIController');
+Route::resource('$ROUTE_PREFIX$$MODEL_NAME_PLURAL_CAMEL$', '$MODEL_NAME$APIController');
 
 
 
