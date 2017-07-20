@@ -34,10 +34,12 @@ class InfyOmGeneratorServiceProvider extends ServiceProvider
     public function boot()
     {
         $configPath = __DIR__.'/../config/laravel_generator.php';
-
+        $themePath = __DIR__.'/../config/laravel_generator.php';
         $this->publishes([
             $configPath => config_path('infyom/laravel_generator.php'),
+            $themePath => config_path('theme.php'),
         ]);
+
     }
 
     /**
