@@ -23,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $app = array(
+            'name' => config('app.name'),
+            'version' => '1.0.0',
+            'settings' => config('theme')
+            );
+        return view('home', array('app' => $app));
     }
 }
