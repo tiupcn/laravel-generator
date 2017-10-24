@@ -1,6 +1,6 @@
 {
-    "name": "infyomlabs/laravel-generator",
-    "description": "InfyOm Laravel Generator",
+    "name": "tiup/laravel-generator",
+    "description": "TiUP Laravel Generator",
     "keywords": [
         "laravel",
         "api",
@@ -12,6 +12,7 @@
         "repository",
         "view",
         "test",
+        "tiup",
         "generator",
         "swagger"
     ],
